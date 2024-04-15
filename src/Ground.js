@@ -21,11 +21,11 @@ export function Ground() {
     // normal.encoding = LinearEncoding;
   }, [normal, roughness]);
 
-  useFrame((state, delta) => {
-    let t = -state.clock.getElapsedTime() * 0.128;
-    roughness.offset.set(0, t % 1);
-    normal.offset.set(0, t % 1);
-  });
+  //   useFrame((state, delta) => {
+  //     let t = -state.clock.getElapsedTime() * 0.128;
+  //     roughness.offset.set(0, t % 1);
+  //     normal.offset.set(0, t % 1);
+  //   });
 
   return (
     <mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow>
