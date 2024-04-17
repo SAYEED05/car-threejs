@@ -28,27 +28,23 @@ const environmentsAvaiablePreset = [
 
 const customEnvs = [
   {
-    name: "Hoke beach",
-    path: "/hdri/fish_hoek_beach_4k.exr",
-  },
-  {
-    name: "Goegap",
+    name: "Desert",
     path: "/hdri/goegap_4k.exr",
   },
   {
-    name: "Leibstadt",
+    name: "Road",
     path: "/hdri/leibstadt_4k.exr",
   },
   {
-    name: "Shady Patch",
+    name: "greenery",
     path: "/hdri/shady_patch_4k.exr",
   },
   {
-    name: "Spiaggia di Mondello",
+    name: "Beach",
     path: "/hdri/spiaggia_di_mondello_4k.exr",
   },
   {
-    name: "Sky is on Fire",
+    name: "Sunset",
     path: "/hdri/the_sky_is_on_fire_4k.exr",
   },
 ];
@@ -173,7 +169,10 @@ function CarShow() {
                         width: "80px",
                         padding: "20px",
                         cursor: "pointer",
-                        background: "rgba( 255, 255, 255, 0.25 )",
+                        background:
+                          item.path === env
+                            ? "#f6f4da"
+                            : "rgba( 255, 255, 255, 0.25 )",
                         boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
                         backdropFilter: "blur( 4px )",
                         borderRadius: "10px",
