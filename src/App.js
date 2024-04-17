@@ -9,25 +9,52 @@ import {
   Stats,
 } from "@react-three/drei";
 import "./App.css";
-import { Car } from "./Car";
-import EnvironmentMenu from "./components/EnvironmentMenu";
+// import { Car } from "./Car";
 import { Circle } from "./Circle";
+import { GvCar } from "./GvCar";
 
-const environmentsAvaiable = [
-  // "apartment",
+const environmentsAvaiablePreset = [
   "city",
   "dawn",
   "forest",
-  // "lobby",
   "night",
   "park",
-  // "studio",
   "sunset",
   "warehouse",
+  // "apartment",
+  // "lobby",
+  // "studio",
+];
+
+const customEnvs = [
+  {
+    name: "Hoke beach",
+    path: "/hdri/fish_hoek_beach_4k.exr",
+  },
+  {
+    name: "Goegap",
+    path: "/hdri/goegap_4k.exr",
+  },
+  {
+    name: "Leibstadt",
+    path: "/hdri/leibstadt_4k.exr",
+  },
+  {
+    name: "Shady Patch",
+    path: "/hdri/shady_patch_4k.exr",
+  },
+  {
+    name: "Spiaggia di Mondello",
+    path: "/hdri/spiaggia_di_mondello_4k.exr",
+  },
+  {
+    name: "Sky is on Fire",
+    path: "/hdri/the_sky_is_on_fire_4k.exr",
+  },
 ];
 
 function CarShow() {
-  const [env, setEnv] = useState("park");
+  const [env, setEnv] = useState("/hdri/spiaggia_di_mondello_4k.exr");
   const [carColor, setCarColor] = useState({ r: 0.2, g: 0, b: 0 });
   const [isOpen, setIsOpen] = useState(false);
 
@@ -43,13 +70,6 @@ function CarShow() {
     console.log(`red: ${r}, green: ${g}, blue: ${b}`);
     return { r, g, b };
   }
-  const Buttons = [
-    {
-      name: "Change Tyre",
-      icon: "/icons/tyre.png",
-      action: () => console.log("changed tyre"),
-    },
-  ];
 
   return (
     <>
@@ -57,7 +77,8 @@ function CarShow() {
       <PerspectiveCamera makeDefault fov={50} position={[20, 2, 60]} />
 
       <Environment
-        preset={env}
+        // preset={env}
+        files={env}
         backgroundBlurriness={0}
         blur={0}
         backgroundIntensity={100}
@@ -65,7 +86,8 @@ function CarShow() {
         ground={[0, 0.35, 0]}
         environmentIntensity={1}
       />
-      <Car carColor={carColor} />
+      <GvCar carColor={carColor} />
+      {/* <Car carColor={carColor} /> */}
       <Circle />
       {/* <EnvironmentMenu setEnv={setEnv} /> */}
       <Html scale={1} occlude transform position={[30, 1, 25]}>
@@ -144,7 +166,7 @@ function CarShow() {
                     gap: "20px",
                   }}
                 >
-                  {environmentsAvaiable.map((item) => (
+                  {customEnvs.map((item) => (
                     <div
                       style={{
                         height: "40px",
@@ -162,9 +184,9 @@ function CarShow() {
                         fontSize: "24px",
                       }}
                       key={item}
-                      onClick={() => setEnv(item)}
+                      onClick={() => setEnv(item.path)}
                     >
-                      {item}
+                      {item.name}
                     </div>
                   ))}
                 </div>
