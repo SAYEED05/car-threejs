@@ -18,7 +18,7 @@ const environmentsAvaiable = [
   "city",
   "dawn",
   "forest",
-  "lobby",
+  // "lobby",
   "night",
   "park",
   // "studio",
