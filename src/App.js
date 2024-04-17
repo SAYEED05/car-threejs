@@ -69,7 +69,12 @@ function CarShow() {
 
   return (
     <>
-      <OrbitControls target={[0, 0.35, 0]} maxPolarAngle={1.45} />
+      <OrbitControls
+        target={[0, 0.35, 0]}
+        maxPolarAngle={1.45}
+        minDistance={20}
+        maxDistance={100}
+      />
       <PerspectiveCamera makeDefault fov={50} position={[20, 2, 60]} />
 
       <Environment
