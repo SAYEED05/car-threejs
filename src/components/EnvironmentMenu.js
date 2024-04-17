@@ -15,7 +15,7 @@ const EnvironmentMenu = ({ setEnv }) => {
   ];
 
   return (
-    <Html>
+    <Html occlude transform position={[34, 15, 25]}>
       <div
         style={{
           background: "#000",
