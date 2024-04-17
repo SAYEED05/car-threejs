@@ -17,7 +17,6 @@ export function Car({ carColor }) {
     gltf.scene.position.set(0, -0.035, 0);
     gltf.scene.traverse((object) => {
       if (object instanceof Mesh) {
-        // console.log(object.name);
         if (object.name === "CarBody_1_Car_Paint_0") {
           object.material.color.r = carColor.r;
           object.material.color.g = carColor.g;

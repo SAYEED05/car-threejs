@@ -1,5 +1,5 @@
 import React, { Suspense, useState } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import {
   Environment,
   Html,
@@ -63,7 +63,6 @@ function CarShow() {
     const r = parseInt(color.substr(1, 2), 16) / 100;
     const g = parseInt(color.substr(3, 2), 16) / 100;
     const b = parseInt(color.substr(5, 2), 16) / 100;
-    console.log(`red: ${r}, green: ${g}, blue: ${b}`);
     return { r, g, b };
   }
 

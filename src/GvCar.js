@@ -17,9 +17,12 @@ export function GvCar({ carColor }) {
     gltf.scene.position.set(0, -0.035, 15);
     gltf.scene.traverse((object) => {
       if (object instanceof Mesh) {
-        console.log(object, "object");
-        // console.log(object.name);
-        if (object.name === "CarBody_1_Car_Paint_0") {
+        if (
+          [
+            "GRAND_VITARA_EX_CARBODY_MESH",
+            "D22_EX_V_HYBRID_BOOTDOOR_MESH007_3",
+          ].includes(object.name)
+        ) {
           object.material.color.r = carColor.r;
           object.material.color.g = carColor.g;
           object.material.color.b = carColor.b;
