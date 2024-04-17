@@ -27,7 +27,7 @@ function CarShow() {
         ground={[0, 0.35, 0]}
         environmentIntensity={1}
       />
-      {/* <EnvironmentMenu setEnv={setEnv} /> */}
+      <EnvironmentMenu setEnv={setEnv} />
     </>
   );
 }
