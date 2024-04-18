@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Environment,
@@ -11,15 +11,33 @@ import "./App.css";
 import { Circle } from "./Circle";
 import { GvCar } from "./GvCar";
 import CustomizeMenu from "./components/CustomizeMenu";
+import { gsap } from "gsap";
 
 function CarShow() {
+  const cameraRef = useRef();
   const [env, setEnv] = useState("/hdri/spiaggia_di_mondello_4k.exr");
   const [carColor, setCarColor] = useState({ r: 0.2, g: 0, b: 0 });
   const [isOpen, setIsOpen] = useState(false);
-
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: 0, yoyo: false });
+    tl.to(cameraRef.current.position, {
+      duration: 2,
+      x: -62,
+      y: 10,
+      z: 8,
+      ease: "power2.inOut",
+    }).to(cameraRef.current.position, {
+      duration: 2,
+      x: 20,
+      y: 2,
+      z: 60,
+      ease: "power2.inOut",
+    });
+  }, []);
 
   return (
     <>
@@ -29,7 +47,12 @@ function CarShow() {
         minDistance={20}
         maxDistance={100}
       />
-      <PerspectiveCamera makeDefault fov={50} position={[20, 2, 60]} />
+      <PerspectiveCamera
+        makeDefault
+        fov={50}
+        position={[-0, 64, -0]}
+        ref={cameraRef}
+      />
       <Environment
         files={env}
         backgroundBlurriness={0}
