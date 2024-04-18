@@ -21,10 +21,15 @@ export const customEnvs = [
   },
 ];
 
-export function hexTorgb(hexValue) {
-  const color = hexValue.target.value;
-  const r = parseInt(color.substr(1, 2), 16) / 100;
-  const g = parseInt(color.substr(3, 2), 16) / 100;
-  const b = parseInt(color.substr(5, 2), 16) / 100;
-  return { r, g, b };
+export function hexToBlenderRGB(hex) {
+  // Remove the '#' character if present
+  hex = hex.replace("#", "");
+
+  // Parse the hexadecimal string into its RGB components
+  var r = parseInt(hex.substring(0, 2), 16) / 255;
+  var g = parseInt(hex.substring(2, 4), 16) / 255;
+  var b = parseInt(hex.substring(4, 6), 16) / 255;
+
+  // Return the RGB values as an object
+  return { r: r, g: g, b: b };
 }

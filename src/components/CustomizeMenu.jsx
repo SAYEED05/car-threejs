@@ -1,5 +1,5 @@
 import React from "react";
-import { customEnvs, hexTorgb } from "../utils";
+import { customEnvs, hexToBlenderRGB } from "../utils";
 import { Html } from "@react-three/drei";
 
 const CustomizeMenu = ({ setCarColor, togglePopup, isOpen, env, setEnv }) => {
@@ -17,7 +17,7 @@ const CustomizeMenu = ({ setCarColor, togglePopup, isOpen, env, setEnv }) => {
           <input
             type="color"
             id="car_color_picker"
-            onChange={(e) => setCarColor(hexTorgb(e))}
+            onChange={(e) => setCarColor(hexToBlenderRGB(e.target.value))}
             style={{
               display: "none",
             }}
