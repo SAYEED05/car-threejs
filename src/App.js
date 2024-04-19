@@ -39,6 +39,39 @@ function CarShow() {
     });
   }, []);
 
+  const annotations = [
+    {
+      x: 7,
+      y: 10,
+      z: 0.215,
+      tag: "test",
+      onclick: () => {
+        gsap.to(cameraRef.current.position, {
+          duration: 2,
+          x: 13,
+          y: 15,
+          z: -1,
+          ease: "power2.inOut",
+        });
+      },
+    },
+    {
+      x: 7,
+      y: 3,
+      z: 10,
+      tag: "test2",
+      onclick: () => {
+        gsap.to(cameraRef.current.position, {
+          duration: 2,
+          x: 15,
+          y: 7,
+          z: 15,
+          ease: "power2.inOut",
+        });
+      },
+    },
+  ];
+
   return (
     <>
       <OrbitControls
@@ -62,7 +95,7 @@ function CarShow() {
         ground={[0, 0.35, 0]}
         environmentIntensity={1}
       />
-      <GvCar carColor={carColor} />
+      <GvCar carColor={carColor} annotations={annotations} />
       <Circle />
       <CustomizeMenu
         setCarColor={setCarColor}
